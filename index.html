@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Enunosowo Mpama — Operations & Communications Strategist</title>
+  <title>Enunosowo Mpama — Operations & Communications Support</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -66,12 +66,7 @@
     .sec-title em { font-style:italic; color:var(--gold); }
 
     /* ABOUT */
-    #about { background:var(--white); max-width:860px; margin:0 auto; }
-    .about-sticky { display:none; }
-    .about-image { display:none; }
-    .about-image-inner { display:none; }
-    .about-monogram { display:none; }
-    .about-image-tag { display:none; }
+    #about { background:var(--white); }
     .about-content p { font-size:1rem; line-height:1.9; color:#5a5550; margin-bottom:1.4rem; }
     .about-content p strong { color:var(--ink); font-weight:500; }
     .about-highlight { background:var(--gold-pale); border-left:3px solid var(--gold); padding:1.5rem 2rem; margin:2.5rem 0; }
@@ -126,17 +121,8 @@
     #testimonials .sec-title { color:var(--cream); }
 
     /* BLOG */
-    #blog { background:var(--cream); }
-    .blog-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:4rem; flex-wrap:wrap; gap:1rem; }
-    .blog-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:2rem; }
-    .bcard { text-decoration:none; color:inherit; display:flex; flex-direction:column; border-top:1px solid var(--border); padding-top:2rem; transition:opacity 0.2s; }
-    .bcard:hover { opacity:0.75; }
-    .bcard.featured { background:white; border:1px solid var(--border); border-top:3px solid var(--gold); padding:2.5rem; }
-    .bcard-tag { font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; }
-    .bcard-title { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:400; line-height:1.45; margin-bottom:0.8rem; flex:1; }
-    .bcard.featured .bcard-title { font-size:1.55rem; }
-    .bcard-excerpt { font-size:0.85rem; line-height:1.7; color:var(--warm-mid); margin-bottom:1.2rem; }
-    .bcard-date { font-size:0.7rem; letter-spacing:0.1em; color:var(--warm-light); text-transform:uppercase; margin-top:auto; }
+    #blog { background:var(--cream); text-align:center; }
+    #blog .blog-header { display:flex; justify-content:center; margin-bottom:2rem; }
 
     /* FAQ */
     #faq { background:var(--white); }
@@ -146,8 +132,8 @@
     .faq-q:hover { color:var(--gold); }
     .faq-icon { font-size:1.3rem; color:var(--gold); transition:transform 0.3s; flex-shrink:0; }
     .faq-item.open .faq-icon { transform:rotate(45deg); }
-    .faq-a { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
-    .faq-item.open .faq-a { max-height:300px; padding-bottom:1.5rem; }
+    .faq-a { max-height:0; overflow:hidden; transition:max-height 0.5s ease, padding 0.3s; }
+    .faq-item.open .faq-a { max-height:500px; padding-bottom:1.5rem; }
     .faq-a p { font-size:0.9rem; line-height:1.8; color:var(--warm-mid); }
     .faq-right { position:sticky; top:8rem; }
     .faq-box { background:var(--gold-pale); border:1px solid var(--gold); padding:3rem; }
@@ -177,6 +163,8 @@
     .fg textarea { min-height:120px; resize:vertical; }
     .fsub { padding:1rem 2rem; background:var(--gold); color:white; border:none; font-family:'Jost',sans-serif; font-size:0.78rem; letter-spacing:0.16em; text-transform:uppercase; cursor:pointer; transition:opacity 0.2s, transform 0.2s; align-self:flex-start; }
     .fsub:hover { opacity:0.88; transform:translateY(-2px); }
+    .or-divider { text-align:center; margin-top:1.5rem; }
+    .or-divider p { font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(249,246,241,0.3); margin-bottom:1rem; }
 
     /* FOOTER */
     footer { background:#0e0c0a; padding:2.5rem 5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.5rem; }
@@ -188,9 +176,9 @@
     .footer-copy { font-size:0.72rem; color:rgba(249,246,241,0.2); }
 
     /* REVEAL */
-    .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.75s ease, transform 0.75s ease; }
+    .reveal { opacity:1; transform:translateY(0); }
     .reveal.visible { opacity:1; transform:translateY(0); }
-    .d1 { transition-delay:0.1s; } .d2 { transition-delay:0.2s; } .d3 { transition-delay:0.3s; } .d4 { transition-delay:0.4s; }
+    .d1 { transition-delay:0.1s; } .d2 { transition-delay:0.2s; } .d3 { transition-delay:0.3s; }
 
     @keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
     @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
@@ -201,12 +189,10 @@
       section { padding:6rem 2rem; }
       #hero { grid-template-columns:1fr; padding:8rem 2rem 4rem; gap:3rem; }
       .hero-right { display:none; }
-      #about { grid-template-columns:1fr; } .about-sticky { position:static; }
       .services-header { grid-template-columns:1fr; }
       .services-grid { grid-template-columns:1fr 1fr; }
       .work-grid { grid-template-columns:1fr 1fr; }
       .tgrid { grid-template-columns:1fr; }
-      .blog-grid { grid-template-columns:1fr; }
       .faq-grid { grid-template-columns:1fr; }
       #contact { grid-template-columns:1fr; }
       footer { flex-direction:column; text-align:center; }
@@ -243,13 +229,13 @@
   <div class="hero-left">
     <div class="hero-eyebrow">
       <span class="hero-eyebrow-line"></span>
-      <span>Operations & Communications Strategist</span>
+      <span>Operations & Communications Support</span>
     </div>
     <h1 class="hero-name">Enunosowo<br><em>Mpama</em></h1>
     <p class="hero-desc">Trusted by founders and institutions across the legal, research, tech, and finance landscapes to build workflows and communications strategies that scale businesses — and align vision, people, and processes.</p>
     <div class="hero-actions">
       <a href="#services" class="btn-dark">Explore Services</a>
-      <a href="#contact" class="btn-outline">Book a Consultation</a>
+      <a href="https://calendly.com/enunmpama/book-my-services?month=2026-03" target="_blank" class="btn-outline">Book a Consultation</a>
     </div>
   </div>
   <div class="hero-right">
@@ -289,7 +275,7 @@
       </div>
       <div class="about-links">
         <a href="https://calendly.com/enunmpama/book-my-services?month=2026-03" target="_blank" class="btn-dark">Work With Me</a>
-        <a href="https://enunsportfolio.co.site/" target="_blank" class="btn-outline">View My Work</a>
+        <a href="https://linktr.ee/enunosowompama" target="_blank" class="btn-outline">View My Work</a>
       </div>
     </div>
   </div>
@@ -309,9 +295,12 @@
       <div class="scard-icon">◈</div>
       <h3 class="scard-name">Executive Support</h3>
       <ul class="scard-list">
-        <li>Calendar & Meeting Management</li><li>Inbox Management & Email Drafting</li>
-        <li>Meeting Briefs, Agendas & Minutes</li><li>Travel & Scheduling Coordination</li>
-        <li>Follow-ups with Teams & Clients</li><li>Task Prioritisation & Reminder Tools</li>
+        <li>Calendar & Meeting Management</li>
+        <li>Inbox Management & Email Drafting</li>
+        <li>Meeting Briefs, Agendas & Minutes</li>
+        <li>Travel & Scheduling Coordination</li>
+        <li>Follow-ups with Teams & Clients</li>
+        <li>Task Prioritisation & Reminder Tools</li>
       </ul>
       <p class="scard-tools"><strong>Tools:</strong> Google Workspace · MS Office · Calendly · Otter.ai</p>
       <a href="https://calendly.com/enunmpama/book-my-services?month=2026-03" target="_blank" class="scard-book">Book Now →</a>
@@ -320,9 +309,12 @@
       <div class="scard-icon">⬡</div>
       <h3 class="scard-name">Operations Support</h3>
       <ul class="scard-list">
-        <li>Creating SOPs & Process Documentation</li><li>Workflow Setup & Optimisation</li>
-        <li>Task Tracking & Accountability</li><li>Project Coordination & Status Reporting</li>
-        <li>File Management & Documentation</li><li>Staff & Intern Onboarding Checklists</li>
+        <li>Creating SOPs & Process Documentation</li>
+        <li>Workflow Setup & Optimisation</li>
+        <li>Task Tracking & Accountability</li>
+        <li>Project Coordination & Status Reporting</li>
+        <li>File Management & Documentation</li>
+        <li>Staff & Intern Onboarding Checklists</li>
       </ul>
       <p class="scard-tools"><strong>Tools:</strong> Notion · Asana · ClickUp · Zapier</p>
       <a href="https://calendly.com/enunmpama/book-my-services?month=2026-03" target="_blank" class="scard-book">Book Now →</a>
@@ -331,30 +323,37 @@
       <div class="scard-icon">◎</div>
       <h3 class="scard-name">Communications Support</h3>
       <ul class="scard-list">
-        <li>Drafting Internal Announcements</li><li>Client Communication Management</li>
-        <li>Stakeholder Follow-ups</li><li>Newsletter & Update Coordination</li>
-        <li>Reports, Summaries & Briefing Docs</li><li>Team & Department Liaison</li>
+        <li>Drafting Internal Announcements</li>
+        <li>Client Communication Management</li>
+        <li>Stakeholder Follow-ups</li>
+        <li>Newsletter & Update Coordination</li>
+        <li>Reports, Summaries & Briefing Docs</li>
+        <li>Team & Department Liaison</li>
       </ul>
       <p class="scard-tools"><strong>Tools:</strong> Slack · Mailchimp · Canva · Google Workspace</p>
       <a href="https://calendly.com/enunmpama/book-my-services?month=2026-03" target="_blank" class="scard-book">Book Now →</a>
     </div>
     <div class="scard reveal">
-      <div class="scard-icon">◻</div>
+      <div class="scard-icon">⟳</div>
       <h3 class="scard-name">Project & Coordination Support</h3>
       <ul class="scard-list">
-        <li>Launch Coordination (Events & Programs)</li><li>Timeline & Deliverable Tracking</li>
-        <li>Team Accountability Check-ins</li><li>Cross-team Coordination</li>
+        <li>Launch Coordination (Events & Programs)</li>
+        <li>Timeline & Deliverable Tracking</li>
+        <li>Team Accountability Check-ins</li>
+        <li>Cross-team Coordination</li>
         <li>Post-project Reports & Documentation</li>
       </ul>
       <p class="scard-tools"><strong>Tools:</strong> Trello · Monday.com · Airtable · Zoom</p>
       <a href="https://calendly.com/enunmpama/book-my-services?month=2026-03" target="_blank" class="scard-book">Book Now →</a>
     </div>
     <div class="scard reveal d1">
-      <div class="scard-icon">⬜</div>
+      <div class="scard-icon">✦</div>
       <h3 class="scard-name">Compliance & Documentation</h3>
       <ul class="scard-list">
-        <li>Policy Formatting & Organisation</li><li>Record Keeping & Documentation Tracking</li>
-        <li>Filing Deadline Monitoring</li><li>Contract & Admin Documentation</li>
+        <li>Policy Formatting & Organisation</li>
+        <li>Record Keeping & Documentation Tracking</li>
+        <li>Filing Deadline Monitoring</li>
+        <li>Contract & Admin Documentation</li>
       </ul>
       <p class="scard-tools"><strong>Tools:</strong> MS Office · Google Workspace · DocuSign · Notion</p>
       <a href="https://calendly.com/enunmpama/book-my-services?month=2026-03" target="_blank" class="scard-book">Book Now →</a>
@@ -374,7 +373,7 @@
       <div class="sec-label"><span class="sec-label-line"></span><span>Work</span></div>
       <h2 class="sec-title">Where I've made an <em>impact</em></h2>
     </div>
-    <a href="https://enunsportfolio.co.site/" target="_blank" class="btn-outline">View My Work</a>
+    <a href="https://linktr.ee/enunosowompama" target="_blank" class="btn-outline">View My Work</a>
   </div>
   <div class="work-grid">
     <div class="wcard reveal">
@@ -408,12 +407,18 @@
     <div class="tcard reveal">
       <div class="tcard-q">"</div>
       <p class="tcard-text">I had the pleasure of working with Enun on the business development team at AIESEC in Rwanda. She consistently proved herself dependable — not only excelling in her assigned responsibilities, but eagerly taking on research, sales outreach, proposal design, and negotiations with dedication. One of Enun's most admirable qualities is her eagerness to learn. If you're seeking a dynamic team member who brings a refreshing perspective and enthusiasm to the table, Enun is the perfect fit.</p>
-      <div class="tcard-author"><p class="tcard-name">Mayowa Kolawole</p><p class="tcard-role">Digital Entrepreneur · Founder, Admyn</p></div>
+      <div class="tcard-author">
+        <p class="tcard-name">Mayowa Kolawole</p>
+        <p class="tcard-role">Digital Entrepreneur · Founder, Admyn</p>
+      </div>
     </div>
     <div class="tcard reveal d1">
       <div class="tcard-q">"</div>
       <p class="tcard-text">Enunosowo worked as a content writer with me for three months and did an amazing job. Her content is always top-notch — engaging readers from start to finish. She pays great attention to detail, conducts thorough research, and presents information in a well-structured, comprehensive way. She is also skilled in SEO, applying best practices effectively to drive visibility and organic traffic. Professional, reliable, and always meets deadlines. I highly recommend Enunosowo for any writing projects.</p>
-      <div class="tcard-author"><p class="tcard-name">Olaniyi Olufemi</p><p class="tcard-role">Senior Writer · TechGyant</p></div>
+      <div class="tcard-author">
+        <p class="tcard-name">Olaniyi Olufemi</p>
+        <p class="tcard-role">Senior Writer · TechGyant</p>
+      </div>
     </div>
   </div>
 </section>
@@ -426,8 +431,8 @@
       <h2 class="sec-title">Writing on systems, <em>strategy</em> & scale</h2>
     </div>
   </div>
-  <div class="reveal" style="text-align:center; padding:4rem 0;">
-    <p style="font-size:1rem; line-height:1.85; color:var(--warm-mid); max-width:52ch; margin:0 auto 2.5rem;">I write about operations, communications strategy, and what it actually takes to build systems that scale. Follow along on Substack for new essays, frameworks, and insights.</p>
+  <div class="reveal" style="text-align:center; padding:2rem 0 0;">
+    <p style="font-size:1rem; line-height:1.85; color:var(--warm-mid); max-width:58ch; margin:0 auto 2.5rem;">I write about the systems and operations gaps that quietly slow down organisations and governments — and the practical, sustainable solutions that close them. From workflow breakdowns to communication failures, my essays examine why good institutions struggle to execute, and what it actually takes to fix that. Follow along on Substack for new frameworks, case analyses, and insights.</p>
     <a href="https://substack.com/@systemsdesignweekly" target="_blank" class="btn-dark">Read on Substack →</a>
   </div>
 </section>
@@ -442,7 +447,7 @@
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">What kind of clients do you typically work with? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>I work primarily with early-to-mid stage founders, executives, and institutions in the legal, research, and technology sectors — people who need someone who can understand their world fast and build the systems keeping them from full capacity.</p></div>
+        <div class="faq-a"><p>I work primarily with early-to-mid stage founders, executives, and institutions in the legal, research, tech, and finance sectors — people who need someone who can understand their world fast and build the systems keeping them from full capacity.</p></div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">What are your rates? <span class="faq-icon">+</span></button>
@@ -468,7 +473,7 @@
         <a href="#contact" class="btn-dark">Send a Message</a>
         <div class="contact-row">
           <a href="tel:+2349075421033" class="contact-item"><div class="citem-icon">✆</div>+234 9075421033</a>
-          <a href="/cdn-cgi/l/email-protection#31545f445f5c41505c5071565c50585d1f525e5c" class="contact-item"><div class="citem-icon">✉</div><span class="__cf_email__" data-cfemail="2b4e455e45465b4a464a6b4c464a424705484446">[email&#160;protected]</span></a>
+          <a href="mailto:enunmpama@gmail.com" class="contact-item"><div class="citem-icon">✉</div>enunmpama@gmail.com</a>
           <a href="https://wa.me/2349075421033" target="_blank" class="contact-item"><div class="citem-icon">⊕</div>Connect on WhatsApp</a>
         </div>
       </div>
@@ -485,8 +490,8 @@
     <a href="tel:+2349075421033" class="cdetail reveal">
       <div class="cdetail-icon">✆</div><span class="cdetail-text">+234 9075421033</span>
     </a>
-    <a href="/cdn-cgi/l/email-protection#57323922393a27363a3617303a363e3b7934383a" class="cdetail reveal">
-      <div class="cdetail-icon">✉</div><span class="cdetail-text"><span class="__cf_email__" data-cfemail="86e3e8f3e8ebf6e7ebe7c6e1ebe7efeaa8e5e9eb">[email&#160;protected]</span></span>
+    <a href="/cdn-cgi/l/email-protection#03666d766d6e73626e6243646e626a6f2d606c6e" class="cdetail reveal">
+      <div class="cdetail-icon">✉</div><span class="cdetail-text"><span class="__cf_email__" data-cfemail="1b7e756e75766b7a767a5b7c767a727735787476">[email&#160;protected]</span></span>
     </a>
     <a href="https://wa.me/2349075421033" target="_blank" class="wa-btn reveal">⊕ Connect on WhatsApp</a>
   </div>
@@ -498,9 +503,9 @@
     <div class="fg"><label>Organisation</label><input type="text" placeholder="Where do you work?" id="cOrg"/></div>
     <div class="fg"><label>Message *</label><textarea placeholder="Tell me what you're working on and how I can help..." id="cMsg"></textarea></div>
     <button class="fsub" id="sendBtn">Send Message</button>
-    <div style="text-align:center; margin-top:1.5rem;">
-      <p style="font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(249,246,241,0.3); margin-bottom:1rem;">Or</p>
-      <a href="https://calendly.com/enunmpama/book-my-services?month=2026-03" target="_blank" class="btn-gold" style="display:inline-block;">Book a Consultation Directly →</a>
+    <div class="or-divider">
+      <p>Or</p>
+      <a href="https://calendly.com/enunmpama/book-my-services?month=2026-03" target="_blank" class="btn-gold">Book a Consultation Directly →</a>
     </div>
   </div>
 </section>
@@ -512,14 +517,13 @@
     <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="https://substack.com/@systemsdesignweekly" target="_blank">Blog</a>
-    <a href="/cdn-cgi/l/email-protection#11747f647f7c61707c7051767c70787d3f727e7c">Email</a>
+    <a href="mailto:enunmpama@gmail.com">Email</a>
     <a href="https://wa.me/2349075421033" target="_blank">WhatsApp</a>
   </div>
   <span class="footer-copy">© 2025 Enunosowo Mpama · Lagos, Nigeria</span>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Custom cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   document.addEventListener('mousemove', e => {
@@ -527,18 +531,15 @@
     ring.style.transform = `translate(${e.clientX - 15}px, ${e.clientY - 15}px)`;
   });
 
-  // Nav scroll
   window.addEventListener('scroll', () => {
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
   });
 
-  // Scroll reveal
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // FAQ
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
@@ -548,11 +549,4 @@
     });
   });
 
-  // Form
-  document.getElementById('sendBtn').addEventListener('click', () => {
-    const n = document.getElementById('cName').value.trim();
-    const e = document.getElementById('cEmail').value.trim();
-    const m = document.getElementById('cMsg').value.trim();
-    if (!n || !e || !m) { alert('Please fill in your name, email, and message.'); return; }
-    const btn = document.getElementById('sendBtn');
-    btn.textContent = 'Message Sent ✓'; btn.style.back
+  document.getE
