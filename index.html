@@ -1,203 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Enunosowo Mpama — Operations & Communications Strategist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    :root {
+      --cream: #f9f6f1; --white: #ffffff; --ink: #181614; --ink-soft: #3a3530;
+      --warm-mid: #7a7268; --warm-light: #b8b0a4; --border: #e2ddd7;
+      --gold: #b89060; --gold-light: #f0e8d8; --gold-pale: #faf5ec;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Jost',sans-serif; background:var(--cream); color:var(--ink); font-weight:300; overflow-x:hidden; }
 
-Hi there! 👋
-About
-Services
-Work
-Blog
-FAQ
-Get in Touch
-Operations & Communications Strategist
-Enunosowo
-Mpama
-Trusted by founders and institutions across the legal, research, tech, and finance landscapes to build workflows and communications strategies that scale businesses — and align vision, people, and processes.
+    /* CURSOR */
+    .cursor { width:8px; height:8px; background:var(--gold); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:transform 0.1s; }
+    .cursor-ring { width:30px; height:30px; border:1px solid var(--gold); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:transform 0.3s ease; opacity:0.5; }
 
-Explore Services
-Book a Consultation
-500+
-Cases streamlined at Niger & Nile LP
-80%
-Process automation achieved
-4
-Sectors — Legal, Research, Tech & Finance
-5+
-Years building systems that last
-"Facilitating efficiency through process excellence."
-About Me
-Where structure
-meets strategy
-Over the years, I have built a practice at the intersection of operations and communications — providing solutions that help founders and organisations move with clarity, intention, and scale. My work spans inbox and scheduling management, workflow design, process documentation, and strategic written communication — all engineered to position brands for sustainable impact.
+    /* NAV */
+    nav { position:fixed; top:0; left:0; right:0; z-index:500; display:flex; justify-content:space-between; align-items:center; padding:1.5rem 5rem; background:rgba(249,246,241,0.93); backdrop-filter:blur(16px); border-bottom:1px solid transparent; transition:border-color 0.4s, padding 0.4s; }
+    nav.scrolled { border-color:var(--border); padding:1.1rem 5rem; }
+    .nav-logo { font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--ink); text-decoration:none; }
+    .nav-logo span { color:var(--gold); font-style:italic; }
+    .nav-links { display:flex; gap:2.5rem; list-style:none; }
+    .nav-links a { font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--warm-mid); text-decoration:none; transition:color 0.2s; }
+    .nav-links a:hover { color:var(--ink); }
+    .nav-cta { font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; padding:0.65rem 1.6rem; border:1px solid var(--ink); color:var(--ink); text-decoration:none; transition:background 0.25s, color 0.25s; }
+    .nav-cta:hover { background:var(--ink); color:var(--cream); }
 
-At Niger & Nile LP, I led the redesign of the firm's case management and financial tracking systems using advanced Excel and Google Sheets techniques — streamlining workflows across 500+ cases and achieving 80% process automation. I also standardised internal and stakeholder communication channels, drafted contracts, and authored SOPs that created consistency and accountability across the firm.
+    /* HERO */
+    #hero { min-height:100vh; padding:0 5rem; display:grid; grid-template-columns:1.1fr 0.9fr; align-items:center; gap:5rem; position:relative; overflow:hidden; }
+    .hero-bg { position:absolute; right:-3rem; bottom:-5rem; font-family:'Playfair Display',serif; font-size:22vw; font-weight:500; color:rgba(184,144,96,0.05); line-height:1; pointer-events:none; user-select:none; }
+    .hero-left { padding-top:6rem; position:relative; z-index:1; }
+    .hero-eyebrow { display:inline-flex; align-items:center; gap:0.75rem; margin-bottom:2.5rem; opacity:0; animation:fadeUp 0.7s 0.1s forwards; }
+    .hero-eyebrow-line { width:2.5rem; height:1px; background:var(--gold); }
+    .hero-eyebrow span { font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); }
+    .hero-name { font-family:'Playfair Display',serif; font-size:clamp(3.2rem,5.5vw,6rem); font-weight:400; line-height:1.05; letter-spacing:-0.02em; margin-bottom:2rem; opacity:0; animation:fadeUp 0.7s 0.25s forwards; }
+    .hero-name em { font-style:italic; color:var(--gold); display:block; }
+    .hero-desc { font-size:1.05rem; line-height:1.85; color:var(--warm-mid); max-width:46ch; margin-bottom:3rem; opacity:0; animation:fadeUp 0.7s 0.4s forwards; }
+    .hero-actions { display:flex; gap:1rem; flex-wrap:wrap; opacity:0; animation:fadeUp 0.7s 0.55s forwards; }
+    .btn-dark { display:inline-block; padding:0.9rem 2.4rem; background:var(--ink); color:var(--cream); font-family:'Jost',sans-serif; font-size:0.75rem; letter-spacing:0.14em; text-transform:uppercase; text-decoration:none; transition:background 0.25s, transform 0.2s; }
+    .btn-dark:hover { background:var(--ink-soft); transform:translateY(-2px); }
+    .btn-outline { display:inline-block; padding:0.9rem 2.4rem; border:1px solid var(--border); color:var(--ink); font-family:'Jost',sans-serif; font-size:0.75rem; letter-spacing:0.14em; text-transform:uppercase; text-decoration:none; transition:border-color 0.25s, transform 0.2s; }
+    .btn-outline:hover { border-color:var(--warm-mid); transform:translateY(-2px); }
+    .btn-gold { display:inline-block; padding:0.85rem 2rem; background:var(--gold); color:white; font-family:'Jost',sans-serif; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; text-decoration:none; transition:opacity 0.2s, transform 0.2s; }
+    .btn-gold:hover { opacity:0.88; transform:translateY(-2px); }
+    .hero-right { position:relative; z-index:1; padding-top:6rem; opacity:0; animation:fadeIn 1s 0.5s forwards; }
+    .hero-card { background:white; border:1px solid var(--border); padding:3rem; position:relative; }
+    .hero-card::before { content:''; position:absolute; top:-12px; left:-12px; right:12px; bottom:12px; border:1px solid var(--gold); z-index:-1; }
+    .hero-stats { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:2.5rem; }
+    .hstat { border-top:1px solid var(--border); padding-top:1rem; }
+    .hstat-num { font-family:'Playfair Display',serif; font-size:2.6rem; font-weight:400; line-height:1; }
+    .hstat-num span { color:var(--gold); }
+    .hstat-label { font-size:0.72rem; letter-spacing:0.08em; color:var(--warm-mid); margin-top:0.3rem; }
+    .hero-quote { font-family:'Playfair Display',serif; font-size:1.1rem; font-style:italic; line-height:1.65; color:var(--ink-soft); border-left:2px solid var(--gold); padding-left:1.5rem; }
 
-At the Journal of Intersectional Social Justice, I supported editorial operations, content development, and literature research — organising the workflows that keep priorities, people, and processes running in sync. The through-line across every engagement is the same: I build systems that work even when you're not in the room.
+    /* SECTIONS */
+    section { padding:8rem 5rem; }
+    .sec-label { display:inline-flex; align-items:center; gap:0.75rem; margin-bottom:1.2rem; }
+    .sec-label-line { width:2rem; height:1px; background:var(--gold); }
+    .sec-label span { font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); }
+    .sec-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,3.2vw,3.4rem); font-weight:400; line-height:1.18; margin-bottom:1.5rem; }
+    .sec-title em { font-style:italic; color:var(--gold); }
 
-"I don't just manage tasks — I design the environments in which great work becomes inevitable."
+    /* ABOUT */
+    #about { background:var(--white); max-width:860px; margin:0 auto; }
+    .about-sticky { display:none; }
+    .about-image { display:none; }
+    .about-image-inner { display:none; }
+    .about-monogram { display:none; }
+    .about-image-tag { display:none; }
+    .about-content p { font-size:1rem; line-height:1.9; color:#5a5550; margin-bottom:1.4rem; }
+    .about-content p strong { color:var(--ink); font-weight:500; }
+    .about-highlight { background:var(--gold-pale); border-left:3px solid var(--gold); padding:1.5rem 2rem; margin:2.5rem 0; }
+    .about-highlight p { font-family:'Playfair Display',serif; font-size:1.1rem; font-style:italic; color:var(--ink-soft); line-height:1.65; margin:0; }
+    .about-tags { display:flex; flex-wrap:wrap; gap:0.6rem; margin-top:2rem; }
+    .tag { font-size:0.72rem; letter-spacing:0.1em; padding:0.45rem 1.1rem; border:1px solid var(--border); color:var(--warm-mid); text-transform:uppercase; }
+    .about-links { display:flex; gap:1rem; margin-top:2.5rem; }
 
-Workflow Design
-Executive Support
-Communications Strategy
-Process Automation
-SOP Development
-Project Coordination
-Stakeholder Management
-Documentation
-Work With Me
-View My Work
-Services
-Built for founders
-who need to scale
-Whether you need executive-level support, a process overhaul, or a communications infrastructure that actually holds — I offer five core service areas tailored to the pace and ambition of growing organisations.
+    /* SERVICES */
+    #services { background:var(--cream); }
+    .services-header { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:end; margin-bottom:5rem; }
+    .services-intro { font-size:1rem; line-height:1.85; color:var(--warm-mid); }
+    .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .scard { background:white; border:1px solid var(--border); padding:2.5rem; transition:border-color 0.3s, transform 0.3s, box-shadow 0.3s; position:relative; overflow:hidden; }
+    .scard::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform 0.35s; }
+    .scard:hover { border-color:var(--gold); transform:translateY(-5px); box-shadow:0 20px 60px rgba(0,0,0,0.06); }
+    .scard:hover::after { transform:scaleX(1); }
+    .scard-icon { width:2.8rem; height:2.8rem; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; margin-bottom:1.8rem; color:var(--gold); font-size:1.1rem; }
+    .scard-name { font-family:'Playfair Display',serif; font-size:1.25rem; font-weight:400; margin-bottom:1.2rem; line-height:1.3; }
+    .scard-list { list-style:none; margin-bottom:1.8rem; }
+    .scard-list li { font-size:0.83rem; line-height:1.6; color:var(--warm-mid); padding:0.3rem 0 0.3rem 1rem; position:relative; }
+    .scard-list li::before { content:'›'; position:absolute; left:0; color:var(--gold); }
+    .scard-tools { font-size:0.7rem; letter-spacing:0.08em; color:var(--warm-light); border-top:1px solid var(--border); padding-top:1.2rem; margin-bottom:1.5rem; }
+    .scard-tools strong { color:var(--warm-mid); }
+    .scard-book { display:inline-block; font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:1px; transition:color 0.2s; }
+    .scard-book:hover { color:var(--ink); border-color:var(--ink); }
+    .scard-cta { background:var(--gold-pale); border:1px solid var(--gold); display:flex; flex-direction:column; justify-content:center; }
+    .scard-cta h3 { font-family:'Playfair Display',serif; font-size:1.55rem; font-weight:400; font-style:italic; margin-bottom:1rem; line-height:1.3; }
+    .scard-cta p { font-size:0.9rem; line-height:1.75; color:var(--warm-mid); margin-bottom:2rem; }
 
-◈
-Executive Support
-Calendar & Meeting Management
-Inbox Management & Email Drafting
-Meeting Briefs, Agendas & Minutes
-Travel & Scheduling Coordination
-Follow-ups with Teams & Clients
-Task Prioritisation & Reminder Tools
-Tools: Google Workspace · MS Office · Calendly · Otter.ai
+    /* WORK */
+    #work { background:var(--white); }
+    .work-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:4rem; flex-wrap:wrap; gap:1rem; }
+    .work-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
+    .wcard { border:1px solid var(--border); padding:2.5rem; background:var(--cream); transition:border-color 0.3s, transform 0.3s; }
+    .wcard:hover { border-color:var(--gold); transform:translateY(-4px); }
+    .wcard-tag { font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; }
+    .wcard-title { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:400; line-height:1.4; margin-bottom:1rem; }
+    .wcard-desc { font-size:0.85rem; line-height:1.75; color:var(--warm-mid); margin-bottom:1.5rem; }
+    .wcard-result { display:inline-block; background:var(--gold-pale); border:1px solid var(--gold); color:var(--gold); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.4rem 0.9rem; }
 
-Book Now →
-⬡
-Operations Support
-Creating SOPs & Process Documentation
-Workflow Setup & Optimisation
-Task Tracking & Accountability
-Project Coordination & Status Reporting
-File Management & Documentation
-Staff & Intern Onboarding Checklists
-Tools: Notion · Asana · ClickUp · Zapier
+    /* TESTIMONIALS */
+    #testimonials { background:var(--ink); }
+    .tgrid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; margin-top:4rem; }
+    .tcard { border:1px solid rgba(255,255,255,0.08); padding:2.5rem; background:rgba(255,255,255,0.03); transition:border-color 0.3s; }
+    .tcard:hover { border-color:var(--gold); }
+    .tcard-q { font-family:'Playfair Display',serif; font-size:3.5rem; color:var(--gold); opacity:0.3; line-height:1; margin-bottom:0.5rem; }
+    .tcard-text { font-size:0.92rem; line-height:1.8; color:rgba(249,246,241,0.65); margin-bottom:2rem; }
+    .tcard-author { border-top:1px solid rgba(255,255,255,0.08); padding-top:1.2rem; }
+    .tcard-name { font-size:0.85rem; font-weight:500; color:var(--cream); }
+    .tcard-role { font-size:0.75rem; color:rgba(249,246,241,0.38); margin-top:0.2rem; }
+    #testimonials .sec-title { color:var(--cream); }
 
-Book Now →
-◎
-Communications Support
-Drafting Internal Announcements
-Client Communication Management
-Stakeholder Follow-ups
-Newsletter & Update Coordination
-Reports, Summaries & Briefing Docs
-Team & Department Liaison
-Tools: Slack · Mailchimp · Canva · Google Workspace
+    /* BLOG */
+    #blog { background:var(--cream); }
+    .blog-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:4rem; flex-wrap:wrap; gap:1rem; }
+    .blog-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:2rem; }
+    .bcard { text-decoration:none; color:inherit; display:flex; flex-direction:column; border-top:1px solid var(--border); padding-top:2rem; transition:opacity 0.2s; }
+    .bcard:hover { opacity:0.75; }
+    .bcard.featured { background:white; border:1px solid var(--border); border-top:3px solid var(--gold); padding:2.5rem; }
+    .bcard-tag { font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; }
+    .bcard-title { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:400; line-height:1.45; margin-bottom:0.8rem; flex:1; }
+    .bcard.featured .bcard-title { font-size:1.55rem; }
+    .bcard-excerpt { font-size:0.85rem; line-height:1.7; color:var(--warm-mid); margin-bottom:1.2rem; }
+    .bcard-date { font-size:0.7rem; letter-spacing:0.1em; color:var(--warm-light); text-transform:uppercase; margin-top:auto; }
 
-Book Now →
-◻
-Project & Coordination Support
-Launch Coordination (Events & Programs)
-Timeline & Deliverable Tracking
-Team Accountability Check-ins
-Cross-team Coordination
-Post-project Reports & Documentation
-Tools: Trello · Monday.com · Airtable · Zoom
+    /* FAQ */
+    #faq { background:var(--white); }
+    .faq-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+    .faq-item { border-bottom:1px solid var(--border); }
+    .faq-q { width:100%; background:none; border:none; text-align:left; cursor:pointer; padding:1.5rem 0; display:flex; justify-content:space-between; align-items:center; font-family:'Jost',sans-serif; font-size:0.95rem; font-weight:400; color:var(--ink); gap:1rem; }
+    .faq-q:hover { color:var(--gold); }
+    .faq-icon { font-size:1.3rem; color:var(--gold); transition:transform 0.3s; flex-shrink:0; }
+    .faq-item.open .faq-icon { transform:rotate(45deg); }
+    .faq-a { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
+    .faq-item.open .faq-a { max-height:300px; padding-bottom:1.5rem; }
+    .faq-a p { font-size:0.9rem; line-height:1.8; color:var(--warm-mid); }
+    .faq-right { position:sticky; top:8rem; }
+    .faq-box { background:var(--gold-pale); border:1px solid var(--gold); padding:3rem; }
+    .faq-box h3 { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:400; font-style:italic; margin-bottom:1rem; }
+    .faq-box p { font-size:0.9rem; line-height:1.75; color:var(--warm-mid); margin-bottom:2rem; }
+    .contact-row { display:flex; flex-direction:column; gap:0.8rem; margin-top:2rem; }
+    .contact-item { display:flex; align-items:center; gap:0.8rem; font-size:0.85rem; color:var(--ink-soft); text-decoration:none; transition:color 0.2s; }
+    .contact-item:hover { color:var(--gold); }
+    .citem-icon { width:2rem; height:2rem; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.8rem; color:var(--gold); flex-shrink:0; }
 
-Book Now →
-⬜
-Compliance & Documentation
-Policy Formatting & Organisation
-Record Keeping & Documentation Tracking
-Filing Deadline Monitoring
-Contract & Admin Documentation
-Tools: MS Office · Google Workspace · DocuSign · Notion
+    /* CONTACT */
+    #contact { background:var(--ink); color:var(--cream); display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; }
+    #contact .sec-title { color:var(--cream); }
+    .contact-left p { font-size:1rem; line-height:1.85; color:rgba(249,246,241,0.55); margin-bottom:2.5rem; }
+    .cdetail { display:flex; align-items:center; gap:1rem; margin-bottom:1.2rem; text-decoration:none; transition:opacity 0.2s; }
+    .cdetail:hover { opacity:0.7; }
+    .cdetail-icon { width:2.5rem; height:2.5rem; border:1px solid rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; color:var(--gold); flex-shrink:0; }
+    .cdetail-text { font-size:0.9rem; color:rgba(249,246,241,0.65); }
+    .wa-btn { display:inline-flex; align-items:center; gap:0.75rem; margin-top:2.5rem; padding:1rem 2rem; background:rgba(37,211,102,0.1); border:1px solid rgba(37,211,102,0.3); color:#4cdb87; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; transition:background 0.25s; }
+    .wa-btn:hover { background:rgba(37,211,102,0.2); }
+    .cform { display:flex; flex-direction:column; gap:1.1rem; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .fg { display:flex; flex-direction:column; gap:0.5rem; }
+    .fg label { font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase; color:rgba(249,246,241,0.4); }
+    .fg input, .fg textarea { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:var(--cream); font-family:'Jost',sans-serif; font-size:0.92rem; font-weight:300; padding:0.85rem 1.1rem; outline:none; transition:border-color 0.25s; }
+    .fg input:focus, .fg textarea:focus { border-color:var(--gold); }
+    .fg textarea { min-height:120px; resize:vertical; }
+    .fsub { padding:1rem 2rem; background:var(--gold); color:white; border:none; font-family:'Jost',sans-serif; font-size:0.78rem; letter-spacing:0.16em; text-transform:uppercase; cursor:pointer; transition:opacity 0.2s, transform 0.2s; align-self:flex-start; }
+    .fsub:hover { opacity:0.88; transform:translateY(-2px); }
 
-Book Now →
-Ready to bring structure to your work?
-Book a consultation and let's discuss exactly what your organisation needs — no pressure, no pitch.
+    /* FOOTER */
+    footer { background:#0e0c0a; padding:2.5rem 5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.5rem; }
+    .footer-logo { font-family:'Playfair Display',serif; font-size:1rem; color:rgba(249,246,241,0.5); text-decoration:none; }
+    .footer-logo span { color:var(--gold); font-style:italic; }
+    .footer-links { display:flex; gap:2rem; }
+    .footer-links a { font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(249,246,241,0.3); text-decoration:none; transition:color 0.2s; }
+    .footer-links a:hover { color:var(--gold); }
+    .footer-copy { font-size:0.72rem; color:rgba(249,246,241,0.2); }
 
-Schedule Consultation
-Work
-Where I've made an impact
-View My Work
-Legal · Operations
+    /* REVEAL */
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .d1 { transition-delay:0.1s; } .d2 { transition-delay:0.2s; } .d3 { transition-delay:0.3s; } .d4 { transition-delay:0.4s; }
 
-Redesigning case management for a 500+ case legal portfolio
-At Niger & Nile LP, I rebuilt the firm's case management and financial tracking systems using advanced Excel and Google Sheets — eliminating manual bottlenecks and driving firm-wide automation at scale.
+    @keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 
-80% Process Automation
-Legal · Communications
+    /* RESPONSIVE */
+    @media (max-width:1024px) {
+      nav { padding:1.3rem 2rem; } nav.scrolled { padding:1rem 2rem; }
+      section { padding:6rem 2rem; }
+      #hero { grid-template-columns:1fr; padding:8rem 2rem 4rem; gap:3rem; }
+      .hero-right { display:none; }
+      #about { grid-template-columns:1fr; } .about-sticky { position:static; }
+      .services-header { grid-template-columns:1fr; }
+      .services-grid { grid-template-columns:1fr 1fr; }
+      .work-grid { grid-template-columns:1fr 1fr; }
+      .tgrid { grid-template-columns:1fr; }
+      .blog-grid { grid-template-columns:1fr; }
+      .faq-grid { grid-template-columns:1fr; }
+      #contact { grid-template-columns:1fr; }
+      footer { flex-direction:column; text-align:center; }
+      .nav-links { display:none; }
+    }
+    @media (max-width:640px) {
+      .services-grid { grid-template-columns:1fr; }
+      .work-grid { grid-template-columns:1fr; }
+      .form-row { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
 
-Standardising communications across a complex legal environment
-Overhauled internal communications at Niger & Nile LP — standardising channels, drafting contracts and SOPs, and managing stakeholder correspondence with consistency and precision.
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-Full Comms Infrastructure
-Research · Editorial Operations
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Hi there! <span>👋</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+</nav>
 
-Editorial workflow support for an intersectional academic journal
-At the Journal of Intersectional Social Justice, I organised editorial operations, supported content development, and conducted literature research — keeping the journal's output consistent and its team aligned.
+<!-- HERO -->
+<section id="hero">
+  <span class="hero-bg">EM</span>
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-line"></span>
+      <span>Operations & Communications Strategist</span>
+    </div>
+    <h1 class="hero-name">Enunosowo<br><em>Mpama</em></h1>
+    <p class="hero-desc">Trusted by founders and institutions across the legal, research, tech, and finance landscapes to build workflows and communications strategies that scale businesses — and align vision, people, and processes.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-dark">Explore Services</a>
+      <a href="#contact" class="btn-outline">Book a Consultation</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hero-stats">
+        <div class="hstat"><div class="hstat-num">500<span>+</span></div><div class="hstat-label">Cases streamlined at Niger & Nile LP</div></div>
+        <div class="hstat"><div class="hstat-num">80<span>%</span></div><div class="hstat-label">Process automation achieved</div></div>
+        <div class="hstat"><div class="hstat-num">4</div><div class="hstat-label">Sectors — Legal, Research, Tech & Finance</div></div>
+        <div class="hstat"><div class="hstat-num">5<span>+</span></div><div class="hstat-label">Years building systems that last</div></div>
+      </div>
+      <div class="hero-quote">"Facilitating efficiency through process excellence."</div>
+    </div>
+  </div>
+</section>
 
-Sustained Operational Clarity
-Testimonials
-What clients say
-"
-I had the pleasure of working with Enun on the business development team at AIESEC in Rwanda. She consistently proved herself dependable — not only excelling in her assigned responsibilities, but eagerly taking on research, sales outreach, proposal design, and negotiations with dedication. One of Enun's most admirable qualities is her eagerness to learn. If you're seeking a dynamic team member who brings a refreshing perspective and enthusiasm to the table, Enun is the perfect fit.
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-content">
+    <div class="reveal">
+      <div class="sec-label"><span class="sec-label-line"></span><span>About Me</span></div>
+      <h2 class="sec-title">Where <em>structure</em><br>meets strategy</h2>
+    </div>
+    <div class="reveal d1">
+      <p>Over the years, I have built a practice at the intersection of operations and communications — providing solutions that help founders and organisations move with clarity, intention, and scale. My work spans inbox and scheduling management, workflow design, process documentation, and strategic written communication — all engineered to position brands for sustainable impact.</p>
+      <p>At <strong>Niger & Nile LP</strong>, I led the redesign of the firm's case management and financial tracking systems using advanced Excel and Google Sheets techniques — streamlining workflows across <strong>500+ cases</strong> and achieving <strong>80% process automation</strong>. I also standardised internal and stakeholder communication channels, drafted contracts, and authored SOPs that created consistency and accountability across the firm.</p>
+      <p>At the <strong>Journal of Intersectional Social Justice</strong>, I supported editorial operations, content development, and literature research — organising the workflows that keep priorities, people, and processes running in sync. The through-line across every engagement is the same: I build systems that work even when you're not in the room.</p>
+    </div>
+    <div class="about-highlight reveal d2">
+      <p>"I don't just manage tasks — I design the environments in which great work becomes inevitable."</p>
+    </div>
+    <div class="reveal d2">
+      <div class="about-tags">
+        <span class="tag">Workflow Design</span><span class="tag">Executive Support</span>
+        <span class="tag">Communications Strategy</span><span class="tag">Process Automation</span>
+        <span class="tag">SOP Development</span><span class="tag">Project Coordination</span>
+        <span class="tag">Stakeholder Management</span><span class="tag">Documentation</span>
+      </div>
+      <div class="about-links">
+        <a href="https://calendly.com/enunmpama/book-my-services?month=2026-03" target="_blank" class="btn-dark">Work With Me</a>
+        <a href="https://enunsportfolio.co.site/" target="_blank" class="btn-outline">View My Work</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-Mayowa Kolawole
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <div class="reveal">
+      <div class="sec-label"><span class="sec-label-line"></span><span>Services</span></div>
+      <h2 class="sec-title">Built for <em>founders</em><br>who need to scale</h2>
+    </div>
+    <p class="services-intro reveal">Whether you need executive-level support, a process overhaul, or a communications infrastructure that actually holds — I offer five core service areas tailored to the pace and ambition of growing organisations.</p>
+  </div>
+  <div class="services-grid">
+    <div class="scard reveal">
+      <div class="scard-icon">◈</div>
+      <h3 class="scard-name">Executive Support</h3>
+      <ul class="scard-list">
+        <li>Calendar & Meeting Management</li><li>Inbox Management & Email Drafting</li>
+        <li>Meeting Briefs, Agendas & Minutes</li><li>Travel & Scheduling Coordination</li>
+        <li>Follow-ups with Teams & Clients</li><li>Task Prioritisation & Reminder Tools</li>
+      </ul>
+      <p class="scard-tools"><strong>Tools:</strong> Google Workspace · MS Office · Calendly · Otter.ai</p>
+      <a href="https://calendly.com/enunmpama/book-my-services?month=2026-03" target="_blank" class="scard-book">Book Now →</a>
+    </div>
+    <div class="scard reveal d1">
+      <div class="scard-icon">⬡</div>
+      <h3 class="scard-name">Operations Support</h3>
+      <ul class="scard-list">
+        <li>Creating SOPs & Process Documentation</li><li>Workflow Setup & Optimisation</li>
+        <li>Task Tracking & Accountability</li><li>Project Coordination & Status Reporting</li>
+        <li>File Management & Documentation</li><li>Staff & Intern Onboarding Checklists</li>
+      </ul>
+      <p class="scard-tools"><strong>Tools:</strong> Notion · Asana · ClickUp · Zapier</p>
+      <a href="https://calendly.com/enunmpama/book-my-services?month=2026-03" target="_blank" class="scard-book">Book Now →</a>
+    </div>
+    <div class="scard reveal d2">
+      <div class="scard-icon">◎</div>
+      <h3 class="scard-name">Communications Support</h3>
+      <ul class="scard-list">
+        <li>Drafting Internal Announcements</li><li>Client Communication Management</li>
+        <li>Stakeholder Follow-ups</li><li>Newsletter & Update Coordination</li>
+        <li>Reports, Summaries & Briefing Docs</li><li>Team & Department Liaison</li>
+      </ul>
+      <p class="scard-tools"><strong>Tools:</strong> Slack · Mailchimp · Canva · Google Workspace</p>
+      <a href="https://calendly.com/enunmpama/book-my-services?month=2026-03" target="_blank" class="scard-book">Book Now →</a>
+    </div>
+    <div class="scard reveal">
+      <div class="scard-icon">◻</div>
+      <h3 class="scard-name">Project & Coordination Support</h3>
+      <ul class="scard-list">
+        <li>Launch Coordination (Events & Programs)</li><li>Timeline & Deliverable Tracking</li>
+        <li>Team Accountability Check-ins</li><li>Cross-team Coordination</li>
+        <li>Post-project Reports & Documentation</li>
+      </ul>
+      <p class="scard-tools"><strong>Tools:</strong> Trello · Monday.com · Airtable · Zoom</p>
+      <a href="https://calendly.com/enunmpama/book-my-services?month=2026-03" target="_blank" class="scard-book">Book Now →</a>
+    </div>
+    <div class="scard reveal d1">
+      <div class="scard-icon">⬜</div>
+      <h3 class="scard-name">Compliance & Documentation</h3>
+      <ul class="scard-list">
+        <li>Policy Formatting & Organisation</li><li>Record Keeping & Documentation Tracking</li>
+        <li>Filing Deadline Monitoring</li><li>Contract & Admin Documentation</li>
+      </ul>
+      <p class="scard-tools"><strong>Tools:</strong> MS Office · Google Workspace · DocuSign · Notion</p>
+      <a href="https://calendly.com/enunmpama/book-my-services?month=2026-03" target="_blank" class="scard-book">Book Now →</a>
+    </div>
+    <div class="scard scard-cta reveal d2">
+      <h3>Ready to bring structure to your work?</h3>
+      <p>Book a consultation and let's discuss exactly what your organisation needs — no pressure, no pitch.</p>
+      <a href="https://calendly.com/enunmpama/book-my-services?month=2026-03" target="_blank" class="btn-dark">Schedule Consultation</a>
+    </div>
+  </div>
+</section>
 
-Digital Entrepreneur · Founder, Admyn
+<!-- WORK -->
+<section id="work">
+  <div class="work-header reveal">
+    <div>
+      <div class="sec-label"><span class="sec-label-line"></span><span>Work</span></div>
+      <h2 class="sec-title">Where I've made an <em>impact</em></h2>
+    </div>
+    <a href="https://enunsportfolio.co.site/" target="_blank" class="btn-outline">View My Work</a>
+  </div>
+  <div class="work-grid">
+    <div class="wcard reveal">
+      <p class="wcard-tag">Legal · Operations</p>
+      <h3 class="wcard-title">Redesigning case management for a 500+ case legal portfolio</h3>
+      <p class="wcard-desc">At Niger & Nile LP, I rebuilt the firm's case management and financial tracking systems using advanced Excel and Google Sheets — eliminating manual bottlenecks and driving firm-wide automation at scale.</p>
+      <span class="wcard-result">80% Process Automation</span>
+    </div>
+    <div class="wcard reveal d1">
+      <p class="wcard-tag">Legal · Communications</p>
+      <h3 class="wcard-title">Standardising communications across a complex legal environment</h3>
+      <p class="wcard-desc">Overhauled internal communications at Niger & Nile LP — standardising channels, drafting contracts and SOPs, and managing stakeholder correspondence with consistency and precision.</p>
+      <span class="wcard-result">Full Comms Infrastructure</span>
+    </div>
+    <div class="wcard reveal d2">
+      <p class="wcard-tag">Research · Editorial Operations</p>
+      <h3 class="wcard-title">Editorial workflow support for an intersectional academic journal</h3>
+      <p class="wcard-desc">At the Journal of Intersectional Social Justice, I organised editorial operations, supported content development, and conducted literature research — keeping the journal's output consistent and its team aligned.</p>
+      <span class="wcard-result">Sustained Operational Clarity</span>
+    </div>
+  </div>
+</section>
 
-"
-Enunosowo worked as a content writer with me for three months and did an amazing job. Her content is always top-notch — engaging readers from start to finish. She pays great attention to detail, conducts thorough research, and presents information in a well-structured, comprehensive way. She is also skilled in SEO, applying best practices effectively to drive visibility and organic traffic. Professional, reliable, and always meets deadlines. I highly recommend Enunosowo for any writing projects.
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="reveal">
+    <div class="sec-label"><span class="sec-label-line"></span><span>Testimonials</span></div>
+    <h2 class="sec-title">What clients <em>say</em></h2>
+  </div>
+  <div class="tgrid">
+    <div class="tcard reveal">
+      <div class="tcard-q">"</div>
+      <p class="tcard-text">I had the pleasure of working with Enun on the business development team at AIESEC in Rwanda. She consistently proved herself dependable — not only excelling in her assigned responsibilities, but eagerly taking on research, sales outreach, proposal design, and negotiations with dedication. One of Enun's most admirable qualities is her eagerness to learn. If you're seeking a dynamic team member who brings a refreshing perspective and enthusiasm to the table, Enun is the perfect fit.</p>
+      <div class="tcard-author"><p class="tcard-name">Mayowa Kolawole</p><p class="tcard-role">Digital Entrepreneur · Founder, Admyn</p></div>
+    </div>
+    <div class="tcard reveal d1">
+      <div class="tcard-q">"</div>
+      <p class="tcard-text">Enunosowo worked as a content writer with me for three months and did an amazing job. Her content is always top-notch — engaging readers from start to finish. She pays great attention to detail, conducts thorough research, and presents information in a well-structured, comprehensive way. She is also skilled in SEO, applying best practices effectively to drive visibility and organic traffic. Professional, reliable, and always meets deadlines. I highly recommend Enunosowo for any writing projects.</p>
+      <div class="tcard-author"><p class="tcard-name">Olaniyi Olufemi</p><p class="tcard-role">Senior Writer · TechGyant</p></div>
+    </div>
+  </div>
+</section>
 
-Olaniyi Olufemi
+<!-- BLOG -->
+<section id="blog">
+  <div class="blog-header reveal">
+    <div>
+      <div class="sec-label"><span class="sec-label-line"></span><span>Blog</span></div>
+      <h2 class="sec-title">Writing on systems, <em>strategy</em> & scale</h2>
+    </div>
+  </div>
+  <div class="reveal" style="text-align:center; padding:4rem 0;">
+    <p style="font-size:1rem; line-height:1.85; color:var(--warm-mid); max-width:52ch; margin:0 auto 2.5rem;">I write about operations, communications strategy, and what it actually takes to build systems that scale. Follow along on Substack for new essays, frameworks, and insights.</p>
+    <a href="https://substack.com/@systemsdesignweekly" target="_blank" class="btn-dark">Read on Substack →</a>
+  </div>
+</section>
 
-Senior Writer · TechGyant
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-grid">
+    <div>
+      <div class="reveal">
+        <div class="sec-label"><span class="sec-label-line"></span><span>FAQ</span></div>
+        <h2 class="sec-title">Frequently asked <em>questions</em></h2>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">What kind of clients do you typically work with? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>I work primarily with early-to-mid stage founders, executives, and institutions in the legal, research, and technology sectors — people who need someone who can understand their world fast and build the systems keeping them from full capacity.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">What are your rates? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Rates vary depending on scope, duration, and the nature of the engagement. I offer both retainer-based and project-based arrangements. Book a free consultation and we'll discuss what makes most sense for your budget and needs.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Can you work in physical or in-person settings? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Yes — I'm based in Lagos, Nigeria and can support in-person engagements locally. I'm also fully equipped to work remotely with clients globally, with a robust stack of collaboration and communication tools.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Can you handle urgent or time-sensitive requests? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Absolutely. I'm accustomed to fast-paced environments where priorities shift quickly. For urgent work, reach out directly via WhatsApp or email so we can discuss timelines and capacity upfront.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Do you only work with Nigerian or African clients? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Not at all. While I'm based in Lagos, I work with clients across multiple time zones and adapt seamlessly to different working styles and cultural contexts.</p></div>
+      </div>
+    </div>
+    <div class="faq-right reveal">
+      <div class="faq-box">
+        <h3>Still have questions?</h3>
+        <p>I'd love to hear what you're working on. Reach out directly and let's figure out if we're a good fit — no pressure, no pitch.</p>
+        <a href="#contact" class="btn-dark">Send a Message</a>
+        <div class="contact-row">
+          <a href="tel:+2349075421033" class="contact-item"><div class="citem-icon">✆</div>+234 9075421033</a>
+          <a href="/cdn-cgi/l/email-protection#31545f445f5c41505c5071565c50585d1f525e5c" class="contact-item"><div class="citem-icon">✉</div><span class="__cf_email__" data-cfemail="2b4e455e45465b4a464a6b4c464a424705484446">[email&#160;protected]</span></a>
+          <a href="https://wa.me/2349075421033" target="_blank" class="contact-item"><div class="citem-icon">⊕</div>Connect on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-Blog
-Writing on systems, strategy & scale
-I write about operations, communications strategy, and what it actually takes to build systems that scale. Follow along on Substack for new essays, frameworks, and insights.
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-left">
+    <div class="sec-label reveal"><span class="sec-label-line"></span><span>Contact</span></div>
+    <h2 class="sec-title reveal">Let's build something <em>together</em></h2>
+    <p class="reveal">Ready to bring structure, clarity, and momentum to your work? Whether you're a founder at the start of your scaling journey or an institution navigating complexity — I'm here to help.</p>
+    <a href="tel:+2349075421033" class="cdetail reveal">
+      <div class="cdetail-icon">✆</div><span class="cdetail-text">+234 9075421033</span>
+    </a>
+    <a href="/cdn-cgi/l/email-protection#57323922393a27363a3617303a363e3b7934383a" class="cdetail reveal">
+      <div class="cdetail-icon">✉</div><span class="cdetail-text"><span class="__cf_email__" data-cfemail="86e3e8f3e8ebf6e7ebe7c6e1ebe7efeaa8e5e9eb">[email&#160;protected]</span></span>
+    </a>
+    <a href="https://wa.me/2349075421033" target="_blank" class="wa-btn reveal">⊕ Connect on WhatsApp</a>
+  </div>
+  <div class="cform reveal">
+    <div class="form-row">
+      <div class="fg"><label>Name *</label><input type="text" placeholder="Your full name" id="cName"/></div>
+      <div class="fg"><label>Email *</label><input type="email" placeholder="your@email.com" id="cEmail"/></div>
+    </div>
+    <div class="fg"><label>Organisation</label><input type="text" placeholder="Where do you work?" id="cOrg"/></div>
+    <div class="fg"><label>Message *</label><textarea placeholder="Tell me what you're working on and how I can help..." id="cMsg"></textarea></div>
+    <button class="fsub" id="sendBtn">Send Message</button>
+    <div style="text-align:center; margin-top:1.5rem;">
+      <p style="font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(249,246,241,0.3); margin-bottom:1rem;">Or</p>
+      <a href="https://calendly.com/enunmpama/book-my-services?month=2026-03" target="_blank" class="btn-gold" style="display:inline-block;">Book a Consultation Directly →</a>
+    </div>
+  </div>
+</section>
 
-Read on Substack →
-FAQ
-Frequently asked questions
-What kind of clients do you typically work with?
-+
+<!-- FOOTER -->
+<footer>
+  <a href="#hero" class="footer-logo">Enunosowo <span>Mpama</span></a>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="https://substack.com/@systemsdesignweekly" target="_blank">Blog</a>
+    <a href="/cdn-cgi/l/email-protection#11747f647f7c61707c7051767c70787d3f727e7c">Email</a>
+    <a href="https://wa.me/2349075421033" target="_blank">WhatsApp</a>
+  </div>
+  <span class="footer-copy">© 2025 Enunosowo Mpama · Lagos, Nigeria</span>
+</footer>
 
-What are your rates?
-+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  document.addEventListener('mousemove', e => {
+    cursor.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
+    ring.style.transform = `translate(${e.clientX - 15}px, ${e.clientY - 15}px)`;
+  });
 
-Can you work in physical or in-person settings?
-+
+  // Nav scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
 
-Can you handle urgent or time-sensitive requests?
-+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-Do you only work with Nigerian or African clients?
-+
+  // FAQ
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!open) item.classList.add('open');
+    });
+  });
 
-Still have questions?
-I'd love to hear what you're working on. Reach out directly and let's figure out if we're a good fit — no pressure, no pitch.
-
-Send a Message
-✆
-+234 9075421033
-✉
-[email protected]
-⊕
-Connect on WhatsApp
-Contact
-Let's build something together
-Ready to bring structure, clarity, and momentum to your work? Whether you're a founder at the start of your scaling journey or an institution navigating complexity — I'm here to help.
-
-✆
-+234 9075421033
-✉
-[email protected]
-⊕ Connect on WhatsApp
-Name *
-Your full name
-Email *
-your@email.com
-Organisation
-Where do you work?
-Message *
-Tell me what you're working on and how I can help...
-Send Message
-Or
-
-Book a Consultation Directly →
-Enunosowo Mpama
-About
-Services
-Blog
-Email
-WhatsApp
-© 2025 Enunosowo Mpama · Lagos, Nigeria
+  // Form
+  document.getElementById('sendBtn').addEventListener('click', () => {
+    const n = document.getElementById('cName').value.trim();
+    const e = document.getElementById('cEmail').value.trim();
+    const m = document.getElementById('cMsg').value.trim();
+    if (!n || !e || !m) { alert('Please fill in your name, email, and message.'); return; }
+    const btn = document.getElementById('sendBtn');
+    btn.textContent = 'Message Sent ✓'; btn.style.back
